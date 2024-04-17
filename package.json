@@ -4,9 +4,12 @@
   "description": "flutter_fitness_app_backnd",
   "main": "index.js",
   "type": "module",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
+    "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js",
+    "start": "node src/index.js"
   },
   "author": "sai_sudan",
   "license": "ISC",
