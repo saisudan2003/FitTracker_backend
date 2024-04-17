@@ -6,8 +6,6 @@ import jwt from "jsonwebtoken"
 import { uploadOnCloudinary, deleteFromCloudinary } from "../utils/cloudinary.js"
 import nodemailer from "nodemailer"
 import Mailgen from "mailgen"
-//const nodemailer = require("nodemailer");
-//const Mailgen = require('mailgen')
 
 const generateAccessAndRefereshTokens = async (userId) => {
     try {

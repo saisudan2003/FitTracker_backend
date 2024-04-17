@@ -1,5 +1,3 @@
-// import { Router } from "express";
-// import { verifyJWT } from "../middlewares/auth.middleware.js";
 import { Router } from "express";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 import { Addfood,getFood } from "../controllers/food.controller.js";
