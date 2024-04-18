@@ -23,8 +23,11 @@ const generateAccessAndRefereshTokens = async (userId) => {
         "Something went wrong while generating refresh and access tokens"
       );
     }
-  };
+};
 
+const dummyGet = asyncHandler(async (req,res) => {
+    return res.status(200).json({message: "dummy get"})
+})
 
 const registerUser = asyncHandler(async (req,res) => {
     const {username,email,password,phoneno} = req.body
@@ -338,4 +341,5 @@ export {
     getCurrentUser,
     updateUserDetails,
     updateUserProfileImage,
-    verifyotp}
+    verifyotp,
+    dummyGet}

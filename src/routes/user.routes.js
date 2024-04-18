@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { loginUser, logoutUser, registerUser, refreshAccessToken, changeCurrentPassword, getCurrentUser, updateUserDetails, updateUserProfileImage, verifyotp } from "../controllers/user.controller.js"
+import { loginUser, logoutUser, registerUser, refreshAccessToken, changeCurrentPassword, getCurrentUser, updateUserDetails, updateUserProfileImage, verifyotp, dummyGet } from "../controllers/user.controller.js"
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 import { upload } from "../middlewares/multer.middleware.js";
 
@@ -17,6 +17,7 @@ router.route("/currentuser").get(verifyJWT, getCurrentUser)
 router.route("/updateaccount").patch(verifyJWT, updateUserDetails)
 router.route("/updatepimage").patch(verifyJWT, upload.single("profile_pic"), updateUserProfileImage)
 router.route("/verifyotp").get(verifyJWT,verifyotp)
+router.route("/dummyget").get(dummyGet)
 
 
 
