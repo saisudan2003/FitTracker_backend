@@ -92,7 +92,7 @@ const Addfood = asyncHandler(async (req, res) => {
     if (!food_name || (!food_ml_g && !food_quantity)) {
         throw new ApiError(400, "Food name is required, and either food_ml_g or food_quantity must be provided");
     }
-
+    const originalQuantity = food_ml_g  || food_quantity;
     const providedQuantity = food_ml_g / 100 || food_quantity;
 
     const query = encodeURIComponent(food_name);
@@ -122,7 +122,7 @@ const Addfood = asyncHandler(async (req, res) => {
     const foodItem = {
         food_name,
         food_calories: calories,
-        [food_ml_g ? 'food_ml_g' : 'food_quantity']: providedQuantity,
+        [food_ml_g ? 'food_ml_g' : 'food_quantity']: originalQuantity,
     };
 
     existingUserFood.food_items.push(foodItem);
@@ -136,7 +136,8 @@ const Addfood = asyncHandler(async (req, res) => {
 
 const getFood = asyncHandler(async (req, res) => {
     const username = req.user?._id;
-    const food = await Food.findOne({user: username});
+    const today = new Date().toISOString().split('T')[0];
+    const food = await Food.findOne({ user: username, date: today });
     if (!food) {
         return res
         .status(404)
